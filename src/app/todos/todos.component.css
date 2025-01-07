@@ -1,0 +1,27 @@
+.todos {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        border-radius: 8px;
+        background-color: #f5f5f5;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &__item:hover {
+        color: #777;
+        cursor: pointer;
+    }
+
+    li {
+        list-style: none;
+    }
+}
+
+
