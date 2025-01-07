@@ -3,11 +3,12 @@ import { TodosService } from '../services/todos.service';
 import { Todo } from '../model/todo.type';
 import { catchError } from 'rxjs';
 import { NgIf } from '@angular/common';
+import { TodoItemComponent } from '../component/todo-item/todo-item.component';
 
 @Component({
   selector: 'app-todos',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf,TodoItemComponent],
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.css'
 })
@@ -33,6 +34,21 @@ export class TodosComponent implements OnInit {
       catchError((error)=>{console.log(error);return []})
     ).subscribe((todos)=>{
       this.todoItems.set(todos);
+    });
+  }
+
+  // this method is called when a todo item is toggled
+  updateTodoItem(todoItem:Todo){
+    this.todoItems.update((todos)=>{
+      return todos.map((todo)=>{
+        if(todo.id===todoItem.id){
+          return{
+            ...todo,
+            completed:!todo.completed
+          }
+        }
+        return todo;
+      });
     });
   }
 }

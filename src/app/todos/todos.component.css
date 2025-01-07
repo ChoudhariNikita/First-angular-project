@@ -1,9 +1,6 @@
 .todos {
     padding: 16px;
     
-    li{
-        list-style: none;
-    }
     &__item {
         display: flex;
         align-items: center;
