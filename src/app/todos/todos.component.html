@@ -6,7 +6,11 @@
 
  <h3>Todos List</h3>
 
- <p *ngIf="todoItems().length === 0">Loading...</p>
+ <!-- <p *ngIf="todoItems().length === 0">Loading...</p> -->
+
+ @if(todoItems().length === 0){
+    <p>Loading...</p>
+ }
 
  <ul class="todos">
     @for(todo of todoItems(); track todo.id){
