@@ -1,26 +1,20 @@
 .todos {
     padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
+    
+    li{
+        list-style: none;
+    }
     &__item {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         padding: 8px;
-        border-radius: 8px;
-        background-color: #f5f5f5;
-        transition: all 0.2s ease-in-out;
-    }
+        background-color: #f5f5f5;   
+        }
 
     &__item:hover {
         color: #777;
         cursor: pointer;
-    }
-
-    li {
-        list-style: none;
     }
 }
 
