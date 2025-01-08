@@ -1,19 +1,23 @@
 <!-- <p>{{todoItems()[0].title}}</p> -->
- <!-- @for(todo of todoItems(); track todo.id){
+<!-- @for(todo of todoItems(); track todo.id){
     <p>{{todo.title}}</p>
  } -->
 
+<h3>Todos List</h3>
 
- <h3>Todos List</h3>
+<!-- <p *ngIf="todoItems().length === 0">Loading...</p> -->
 
- <!-- <p *ngIf="todoItems().length === 0">Loading...</p> -->
+@if(todoItems().length === 0){
+<p>Loading...</p>
+}
 
- @if(todoItems().length === 0){
-    <p>Loading...</p>
- }
+<form>
+  <label> Filter Todos</label>
+  <input name="searchTerm" [(ngModel)]="searchTerm" placeholder="Search todos..." />
+</form>
 
- <ul class="todos">
-    @for(todo of todoItems(); track todo.id){
-        <app-todo-item (todoToggled)="updateTodoItem($event)" [todo]="todo"/>
-     }
- </ul>
+<ul class="todos">
+  @for(todo of todoItems() | filterTodos:searchTerm(); track todo.id){
+  <app-todo-item (todoToggled)="updateTodoItem($event)" [todo]="todo" />
+  }
+</ul>

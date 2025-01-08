@@ -4,11 +4,13 @@ import { Todo } from '../model/todo.type';
 import { catchError } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { TodoItemComponent } from '../component/todo-item/todo-item.component';
+import { FormsModule } from '@angular/forms';
+import { FilterTodosPipe } from '../pipes/filter-todos.pipe';
 
 @Component({
   selector: 'app-todos',
   standalone: true,
-  imports: [NgIf,TodoItemComponent],
+  imports: [NgIf,TodoItemComponent,FormsModule,FilterTodosPipe],
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.css'
 })
@@ -19,6 +21,9 @@ export class TodosComponent implements OnInit {
   // create a signal that will hold the list of todos
   // the signal is initialized with an empty array
   todoItems=signal<Array<Todo>>([]);
+
+
+  searchTerm=signal('');
 
   // this method is called when the component is initialized
   ngOnInit():void{
